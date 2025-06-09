@@ -83,8 +83,8 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Dashboard</h1>
-          <p className="text-gray-600 mt-2">Track your progress and continue your interview preparation journey</p>
+          <h1 className="text-3xl font-display font-normal text-gray-800">Dashboard</h1>
+          <p className="text-gray-600 mt-2 font-sans">Track your progress and continue your interview preparation journey</p>
         </div>
 
         {/* Stats Grid */}
@@ -98,9 +98,9 @@ const Dashboard = () => {
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <div className="text-2xl font-bold text-gray-800 mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-600 mb-2">{stat.title}</div>
-                <div className="text-sm text-rose-600 font-medium">{stat.change}</div>
+                <div className="text-2xl font-display font-normal text-gray-800 mb-1">{stat.value}</div>
+                <div className="text-sm text-gray-600 mb-2 font-sans">{stat.title}</div>
+                <div className="text-sm text-rose-600 font-sans font-medium">{stat.change}</div>
               </div>
             );
           })}
@@ -109,7 +109,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Recent Activity */}
           <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-            <h2 className="text-xl font-semibold text-gray-800 mb-6">Recent Activity</h2>
+            <h2 className="text-xl font-display font-normal text-gray-800 mb-6">Recent Activity</h2>
             <div className="space-y-4">
               {recentActivity.map((activity, index) => (
                 <div key={index} className="flex items-center p-4 bg-rose-50 rounded-lg border border-rose-200">
@@ -121,8 +121,8 @@ const Dashboard = () => {
                     )}
                   </div>
                   <div className="flex-grow">
-                    <div className="font-medium text-gray-800">{activity.title}</div>
-                    <div className="text-sm text-gray-600 flex items-center">
+                    <div className="font-sans font-medium text-gray-800">{activity.title}</div>
+                    <div className="text-sm text-gray-600 font-sans flex items-center">
                       <Clock className="h-4 w-4 mr-1" />
                       {activity.time}
                     </div>
@@ -141,18 +141,18 @@ const Dashboard = () => {
 
           {/* Upcoming Tasks */}
           <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-            <h2 className="text-xl font-semibold text-gray-800 mb-6">Upcoming Tasks</h2>
+            <h2 className="text-xl font-display font-normal text-gray-800 mb-6">Upcoming Tasks</h2>
             <div className="space-y-4">
               {upcomingTasks.map((task, index) => (
                 <div key={index} className="flex items-center justify-between p-4 bg-rose-50 rounded-lg border border-rose-200">
                   <div>
-                    <div className="font-medium text-gray-800">{task.title}</div>
-                    <div className="text-sm text-gray-600 flex items-center">
+                    <div className="font-sans font-medium text-gray-800">{task.title}</div>
+                    <div className="text-sm text-gray-600 font-sans flex items-center">
                       <Calendar className="h-4 w-4 mr-1" />
                       {task.dueDate}
                     </div>
                   </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  <div className={`px-3 py-1 rounded-full text-xs font-sans font-medium ${
                     task.priority === 'high' 
                       ? 'bg-rose-100 text-rose-700'
                       : task.priority === 'medium'
@@ -169,10 +169,10 @@ const Dashboard = () => {
 
         {/* Performance Insights */}
         <div className="mt-8 bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-          <h2 className="text-xl font-semibold text-gray-800 mb-6">Performance Insights</h2>
+          <h2 className="text-xl font-display font-normal text-gray-800 mb-6">Performance Insights</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-sm mb-2 font-sans">
                 <span className="text-gray-600">Problem Solving</span>
                 <span className="font-medium">85%</span>
               </div>
@@ -181,7 +181,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div>
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-sm mb-2 font-sans">
                 <span className="text-gray-600">Communication</span>
                 <span className="font-medium">92%</span>
               </div>
@@ -190,7 +190,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div>
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-sm mb-2 font-sans">
                 <span className="text-gray-600">Code Quality</span>
                 <span className="font-medium">78%</span>
               </div>

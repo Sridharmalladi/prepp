@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
             <div className="bg-gradient-to-r from-rose-400 to-indigo-400 p-2 rounded-lg shadow-md">
               <Code className="h-6 w-6 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-rose-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="text-2xl font-display font-normal bg-gradient-to-r from-rose-500 to-indigo-500 bg-clip-text text-transparent">
               Prepify
             </span>
           </Link>
@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-sans font-medium transition-colors duration-200 ${
                     isActive(item.href)
                       ? 'text-rose-600 bg-rose-50'
                       : 'text-gray-700 hover:text-rose-600 hover:bg-rose-50'
@@ -63,13 +63,13 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
             <div className="hidden md:flex items-center space-x-4">
               <Link
                 to="/login"
-                className="text-gray-700 hover:text-rose-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-gray-700 hover:text-rose-600 px-3 py-2 rounded-md text-sm font-sans font-medium transition-colors duration-200"
               >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                className="bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 px-4 py-2 rounded-md text-sm font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                className="bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 px-4 py-2 rounded-md text-sm font-sans font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 Get Started
               </Link>
@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
                     key={item.name}
                     to={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-sans font-medium transition-colors duration-200 ${
                       isActive(item.href)
                         ? 'text-rose-600 bg-rose-50'
                         : 'text-gray-700 hover:text-rose-600 hover:bg-rose-50'
@@ -116,14 +116,14 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
                 <Link
                   to="/login"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-colors duration-200"
+                  className="block px-3 py-2 text-base font-sans font-medium text-gray-700 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-colors duration-200"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/register"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block px-3 py-2 text-base font-medium bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 rounded-md hover:from-rose-500 hover:to-indigo-500 transition-all duration-200"
+                  className="block px-3 py-2 text-base font-sans font-medium bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 rounded-md hover:from-rose-500 hover:to-indigo-500 transition-all duration-200"
                 >
                   Get Started
                 </Link>
