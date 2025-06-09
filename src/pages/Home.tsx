@@ -1,0 +1,197 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Code, Brain, Target, Users, ArrowRight, CheckCircle, Star } from 'lucide-react';
+
+const Home = () => {
+  const features = [
+    {
+      icon: Code,
+      title: 'Coding Practice',
+      description: 'Solve algorithmic problems with our interactive code editor and instant feedback.',
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      icon: Brain,
+      title: 'Mock Interviews',
+      description: 'Practice with AI-powered mock interviews tailored to your target companies.',
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      icon: Target,
+      title: 'Skill Assessment',
+      description: 'Track your progress and identify areas for improvement with detailed analytics.',
+      color: 'from-green-500 to-emerald-500'
+    },
+    {
+      icon: Users,
+      title: 'Community',
+      description: 'Connect with other job seekers and share interview experiences.',
+      color: 'from-orange-500 to-red-500'
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: 'Sarah Chen',
+      role: 'Software Engineer at Google',
+      content: 'Prepify helped me land my dream job! The mock interviews were incredibly realistic.',
+      rating: 5
+    },
+    {
+      name: 'Michael Rodriguez',
+      role: 'Full Stack Developer at Meta',
+      content: 'The coding challenges perfectly prepared me for technical interviews.',
+      rating: 5
+    },
+    {
+      name: 'Emily Johnson',
+      role: 'Data Scientist at Netflix',
+      content: 'Amazing platform with comprehensive preparation materials.',
+      rating: 5
+    }
+  ];
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+              Master Your{' '}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Interview Skills
+              </span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Comprehensive interview preparation platform with coding challenges, mock interviews, 
+              and personalized feedback to help you land your dream job.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/register"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                Start Preparing Now
+                <ArrowRight className="inline-block ml-2 h-5 w-5" />
+              </Link>
+              <Link
+                to="/dashboard"
+                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-200"
+              >
+                View Dashboard
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Everything You Need to Succeed
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Our comprehensive platform provides all the tools and resources you need to ace your interviews.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center mb-6`}>
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">10,000+</div>
+              <div className="text-xl opacity-90">Students Prepared</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">500+</div>
+              <div className="text-xl opacity-90">Coding Problems</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">95%</div>
+              <div className="text-xl opacity-90">Success Rate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Success Stories
+            </h2>
+            <p className="text-xl text-gray-600">
+              Hear from our students who landed their dream jobs
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-6 italic">"{testimonial.content}"</p>
+                <div>
+                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                  <div className="text-sm text-gray-500">{testimonial.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Ready to Land Your Dream Job?
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Join thousands of successful candidates who used Prepify to ace their interviews.
+          </p>
+          <Link
+            to="/register"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center"
+          >
+            Get Started for Free
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
