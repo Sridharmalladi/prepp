@@ -85,7 +85,7 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
       <section className={`relative ${themeClasses.heroBg} py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <h1 className={`text-4xl md:text-6xl font-display font-normal ${themeClasses.textPrimary} mb-6 transition-colors duration-300 leading-tight`}>
+            <h1 className={`text-4xl md:text-6xl font-heading font-semibold ${themeClasses.textPrimary} mb-6 transition-colors duration-300 leading-tight`}>
               Master Your{' '}
               <span className={`bg-gradient-to-r ${isDarkMode ? 'from-rose-300 to-indigo-300' : 'from-rose-500 to-indigo-500'} bg-clip-text text-transparent`}>
                 Interview Skills
@@ -124,7 +124,7 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
       <section className={`py-20 px-4 sm:px-6 lg:px-8 ${themeClasses.sectionBg} transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className={`text-3xl md:text-4xl font-display font-normal ${themeClasses.textPrimary} mb-4 transition-colors duration-300`}>
+            <h2 className={`text-3xl md:text-4xl font-heading font-semibold ${themeClasses.textPrimary} mb-4 transition-colors duration-300`}>
               Everything You Need to Succeed
             </h2>
             <p className={`text-xl font-sans ${themeClasses.textSecondary} max-w-2xl mx-auto transition-colors duration-300 leading-relaxed`}>
@@ -143,7 +143,7 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
                   <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center mb-6 shadow-md`}>
                     <Icon className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className={`text-xl font-display font-normal ${themeClasses.textPrimary} mb-3 transition-colors duration-300`}>{feature.title}</h3>
+                  <h3 className={`text-xl font-heading font-medium ${themeClasses.textPrimary} mb-3 transition-colors duration-300`}>{feature.title}</h3>
                   <p className={`${themeClasses.textSecondary} font-sans transition-colors duration-300 leading-relaxed`}>{feature.description}</p>
                 </div>
               );
@@ -157,15 +157,15 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
             <div className="transform hover:scale-105 transition-transform duration-200">
-              <div className="text-4xl md:text-5xl font-display font-normal mb-2 drop-shadow-lg">10,000+</div>
+              <div className="text-4xl md:text-5xl font-heading font-bold mb-2 drop-shadow-lg">10,000+</div>
               <div className="text-xl font-sans opacity-90">Students Prepared</div>
             </div>
             <div className="transform hover:scale-105 transition-transform duration-200">
-              <div className="text-4xl md:text-5xl font-display font-normal mb-2 drop-shadow-lg">500+</div>
+              <div className="text-4xl md:text-5xl font-heading font-bold mb-2 drop-shadow-lg">500+</div>
               <div className="text-xl font-sans opacity-90">Coding Problems</div>
             </div>
             <div className="transform hover:scale-105 transition-transform duration-200">
-              <div className="text-4xl md:text-5xl font-display font-normal mb-2 drop-shadow-lg">95%</div>
+              <div className="text-4xl md:text-5xl font-heading font-bold mb-2 drop-shadow-lg">95%</div>
               <div className="text-xl font-sans opacity-90">Success Rate</div>
             </div>
           </div>
@@ -176,7 +176,7 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
       <section className={`py-20 px-4 sm:px-6 lg:px-8 ${themeClasses.testimonialsBg} transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className={`text-3xl md:text-4xl font-display font-normal ${themeClasses.textPrimary} mb-4 transition-colors duration-300`}>
+            <h2 className={`text-3xl md:text-4xl font-heading font-semibold ${themeClasses.textPrimary} mb-4 transition-colors duration-300`}>
               Success Stories
             </h2>
             <p className={`text-xl font-sans ${themeClasses.textSecondary} transition-colors duration-300`}>
@@ -209,7 +209,7 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
       {/* CTA Section */}
       <section className={`py-20 px-4 sm:px-6 lg:px-8 ${themeClasses.sectionBg} transition-colors duration-300`}>
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`text-3xl md:text-4xl font-display font-normal ${themeClasses.textPrimary} mb-6 transition-colors duration-300`}>
+          <h2 className={`text-3xl md:text-4xl font-heading font-semibold ${themeClasses.textPrimary} mb-6 transition-colors duration-300`}>
             Ready to Land Your Dream Job?
           </h2>
           <p className={`text-xl font-sans ${themeClasses.textSecondary} mb-8 transition-colors duration-300 leading-relaxed`}>

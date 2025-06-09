@@ -35,12 +35,12 @@ const Register = () => {
             <div className="bg-gradient-to-r from-rose-400 to-indigo-400 p-3 rounded-lg shadow-md">
               <Code className="h-8 w-8 text-white" />
             </div>
-            <span className="text-3xl font-bold bg-gradient-to-r from-rose-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="text-3xl font-heading font-semibold bg-gradient-to-r from-rose-500 to-indigo-500 bg-clip-text text-transparent">
               Prepify
             </span>
           </Link>
-          <h2 className="text-3xl font-bold text-gray-800">Create your account</h2>
-          <p className="mt-2 text-gray-600">Start your interview preparation journey today</p>
+          <h2 className="text-3xl font-heading font-semibold text-gray-800">Create your account</h2>
+          <p className="mt-2 text-gray-600 font-sans">Start your interview preparation journey today</p>
         </div>
 
         {/* Form */}
@@ -49,7 +49,7 @@ const Register = () => {
             {/* Name fields */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="firstName" className="block text-sm font-sans font-medium text-gray-700 mb-1">
                   First name
                 </label>
                 <div className="relative">
@@ -63,14 +63,14 @@ const Register = () => {
                     required
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="block w-full pl-10 pr-3 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200"
+                    className="block w-full pl-10 pr-3 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200 font-sans"
                     placeholder="First name"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="lastName" className="block text-sm font-sans font-medium text-gray-700 mb-1">
                   Last name
                 </label>
                 <input
@@ -80,7 +80,7 @@ const Register = () => {
                   required
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="block w-full px-3 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200"
+                  className="block w-full px-3 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200 font-sans"
                   placeholder="Last name"
                 />
               </div>
@@ -88,7 +88,7 @@ const Register = () => {
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-sans font-medium text-gray-700 mb-1">
                 Email address
               </label>
               <div className="relative">
@@ -103,7 +103,7 @@ const Register = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200"
+                  className="block w-full pl-10 pr-3 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200 font-sans"
                   placeholder="Enter your email"
                 />
               </div>
@@ -111,7 +111,7 @@ const Register = () => {
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-sans font-medium text-gray-700 mb-1">
                 Password
               </label>
               <div className="relative">
@@ -126,7 +126,7 @@ const Register = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-10 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200"
+                  className="block w-full pl-10 pr-10 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200 font-sans"
                   placeholder="Create a password"
                 />
                 <button
@@ -145,7 +145,7 @@ const Register = () => {
 
             {/* Confirm Password */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="confirmPassword" className="block text-sm font-sans font-medium text-gray-700 mb-1">
                 Confirm password
               </label>
               <div className="relative">
@@ -160,7 +160,7 @@ const Register = () => {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-10 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200"
+                  className="block w-full pl-10 pr-10 py-3 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all duration-200 font-sans"
                   placeholder="Confirm your password"
                 />
                 <button
@@ -187,7 +187,7 @@ const Register = () => {
               required
               className="h-4 w-4 text-rose-600 focus:ring-rose-400 border-gray-300 rounded"
             />
-            <label htmlFor="agree-terms" className="ml-2 block text-sm text-gray-700">
+            <label htmlFor="agree-terms" className="ml-2 block text-sm text-gray-700 font-sans">
               I agree to the{' '}
               <a href="#" className="text-rose-600 hover:text-rose-500 font-medium">
                 Terms of Service
@@ -203,7 +203,7 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-slate-800 bg-gradient-to-r from-rose-400 to-indigo-400 hover:from-rose-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-400 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-sans font-medium rounded-lg text-slate-800 bg-gradient-to-r from-rose-400 to-indigo-400 hover:from-rose-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-400 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               Create account
             </button>
@@ -215,7 +215,7 @@ const Register = () => {
               <div className="w-full border-t border-rose-200" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              <span className="px-2 bg-white text-gray-500 font-sans">Or continue with</span>
             </div>
           </div>
 
@@ -223,7 +223,7 @@ const Register = () => {
           <div className="grid grid-cols-2 gap-3">
             <button
               type="button"
-              className="w-full inline-flex justify-center py-3 px-4 border border-rose-200 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-rose-50 transition-all duration-200"
+              className="w-full inline-flex justify-center py-3 px-4 border border-rose-200 rounded-lg shadow-sm bg-white text-sm font-sans font-medium text-gray-500 hover:bg-rose-50 transition-all duration-200"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -236,7 +236,7 @@ const Register = () => {
 
             <button
               type="button"
-              className="w-full inline-flex justify-center py-3 px-4 border border-rose-200 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-rose-50 transition-all duration-200"
+              className="w-full inline-flex justify-center py-3 px-4 border border-rose-200 rounded-lg shadow-sm bg-white text-sm font-sans font-medium text-gray-500 hover:bg-rose-50 transition-all duration-200"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
@@ -247,7 +247,7 @@ const Register = () => {
 
           {/* Sign in link */}
           <div className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 font-sans">
               Already have an account?{' '}
               <Link to="/login" className="font-medium text-rose-600 hover:text-rose-500">
                 Sign in
