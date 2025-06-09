@@ -95,8 +95,8 @@ const CodingPractice = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Coding Practice</h1>
-          <p className="text-gray-600">Sharpen your coding skills with our curated problem sets</p>
+          <h1 className="text-3xl font-heading font-bold text-gray-800 mb-2">Coding Practice</h1>
+          <p className="text-gray-600 font-sans">Sharpen your coding skills with our curated problem sets</p>
         </div>
 
         {/* Stats Overview */}
@@ -104,8 +104,8 @@ const CodingPractice = () => {
           <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-gray-800">47</div>
-                <div className="text-sm text-gray-600">Problems Solved</div>
+                <div className="text-2xl font-heading font-bold text-gray-800">47</div>
+                <div className="text-sm text-gray-600 font-sans">Problems Solved</div>
               </div>
               <CheckCircle className="h-8 w-8 text-rose-600" />
             </div>
@@ -114,8 +114,8 @@ const CodingPractice = () => {
           <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-gray-800">156</div>
-                <div className="text-sm text-gray-600">Total Attempts</div>
+                <div className="text-2xl font-heading font-bold text-gray-800">156</div>
+                <div className="text-sm text-gray-600 font-sans">Total Attempts</div>
               </div>
               <Play className="h-8 w-8 text-indigo-600" />
             </div>
@@ -124,8 +124,8 @@ const CodingPractice = () => {
           <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-gray-800">78%</div>
-                <div className="text-sm text-gray-600">Success Rate</div>
+                <div className="text-2xl font-heading font-bold text-gray-800">78%</div>
+                <div className="text-sm text-gray-600 font-sans">Success Rate</div>
               </div>
               <Star className="h-8 w-8 text-rose-600" />
             </div>
@@ -134,8 +134,8 @@ const CodingPractice = () => {
           <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-gray-800">12</div>
-                <div className="text-sm text-gray-600">Day Streak</div>
+                <div className="text-2xl font-heading font-bold text-gray-800">12</div>
+                <div className="text-sm text-gray-600 font-sans">Day Streak</div>
               </div>
               <Clock className="h-8 w-8 text-indigo-600" />
             </div>
@@ -154,7 +154,7 @@ const CodingPractice = () => {
                   placeholder="Search problems..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
                 />
               </div>
             </div>
@@ -165,7 +165,7 @@ const CodingPractice = () => {
               <select
                 value={selectedDifficulty}
                 onChange={(e) => setSelectedDifficulty(e.target.value)}
-                className="border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent"
+                className="border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
               >
                 {difficulties.map(difficulty => (
                   <option key={difficulty} value={difficulty}>
@@ -180,7 +180,7 @@ const CodingPractice = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent"
+                className="border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>
@@ -199,19 +199,19 @@ const CodingPractice = () => {
               <div className="flex flex-col lg:flex-row lg:items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-semibold text-gray-800">{problem.title}</h3>
+                    <h3 className="text-xl font-heading font-semibold text-gray-800">{problem.title}</h3>
                     {problem.solved && <CheckCircle className="h-5 w-5 text-rose-600" />}
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(problem.difficulty)}`}>
+                    <span className={`px-2 py-1 rounded-full text-xs font-sans font-medium ${getDifficultyColor(problem.difficulty)}`}>
                       {problem.difficulty}
                     </span>
-                    <span className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">
+                    <span className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-sans font-medium">
                       {problem.category}
                     </span>
                   </div>
                   
-                  <p className="text-gray-600 mb-4">{problem.description}</p>
+                  <p className="text-gray-600 mb-4 font-sans">{problem.description}</p>
                   
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                  <div className="flex flex-wrap gap-4 text-sm text-gray-500 font-sans">
                     <div>Attempts: {problem.attempts}</div>
                     <div>Success Rate: {problem.successRate}%</div>
                     <div>Time: {problem.timeComplexity}</div>
@@ -220,7 +220,7 @@ const CodingPractice = () => {
                 </div>
                 
                 <div className="mt-4 lg:mt-0 lg:ml-6">
-                  <button className="bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 px-6 py-3 rounded-lg font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2">
+                  <button className="bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 px-6 py-3 rounded-lg font-sans font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2">
                     <Code className="h-5 w-5" />
                     <span>{problem.solved ? 'Solve Again' : 'Start Solving'}</span>
                   </button>
@@ -233,8 +233,8 @@ const CodingPractice = () => {
         {filteredProblems.length === 0 && (
           <div className="text-center py-12">
             <Code className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-medium text-gray-800 mb-2">No problems found</h3>
-            <p className="text-gray-600">Try adjusting your filters or search terms</p>
+            <h3 className="text-xl font-heading font-medium text-gray-800 mb-2">No problems found</h3>
+            <p className="text-gray-600 font-sans">Try adjusting your filters or search terms</p>
           </div>
         )}
       </div>

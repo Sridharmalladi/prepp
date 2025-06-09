@@ -56,8 +56,8 @@ const Profile = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Profile</h1>
-          <p className="text-gray-600">Track your progress and achievements</p>
+          <h1 className="text-3xl font-heading font-bold text-gray-800 mb-2">Profile</h1>
+          <p className="text-gray-600 font-sans">Track your progress and achievements</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -68,47 +68,47 @@ const Profile = () => {
                 <div className="w-24 h-24 bg-gradient-to-r from-rose-400 to-indigo-400 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <User className="h-12 w-12 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800">John Doe</h2>
-                <p className="text-gray-600">Software Engineer</p>
+                <h2 className="text-2xl font-heading font-bold text-gray-800">John Doe</h2>
+                <p className="text-gray-600 font-sans">Software Engineer</p>
               </div>
 
               <div className="space-y-4">
-                <div className="flex items-center space-x-3 text-gray-600">
+                <div className="flex items-center space-x-3 text-gray-600 font-sans">
                   <Mail className="h-5 w-5" />
                   <span>john.doe@example.com</span>
                 </div>
-                <div className="flex items-center space-x-3 text-gray-600">
+                <div className="flex items-center space-x-3 text-gray-600 font-sans">
                   <Calendar className="h-5 w-5" />
                   <span>Joined March 2024</span>
                 </div>
-                <div className="flex items-center space-x-3 text-gray-600">
+                <div className="flex items-center space-x-3 text-gray-600 font-sans">
                   <Target className="h-5 w-5" />
                   <span>Target: Senior SWE</span>
                 </div>
               </div>
 
-              <button className="w-full mt-6 bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 py-2 rounded-lg font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md">
+              <button className="w-full mt-6 bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 py-2 rounded-lg font-sans font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md">
                 Edit Profile
               </button>
             </div>
 
             {/* Quick Stats */}
             <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Stats</h3>
+              <h3 className="text-lg font-heading font-semibold text-gray-800 mb-4">Quick Stats</h3>
               <div className="space-y-4">
-                <div className="flex justify-between">
+                <div className="flex justify-between font-sans">
                   <span className="text-gray-600">Problems Solved</span>
                   <span className="font-semibold text-gray-800">47</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between font-sans">
                   <span className="text-gray-600">Mock Interviews</span>
                   <span className="font-semibold text-gray-800">8</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between font-sans">
                   <span className="text-gray-600">Current Streak</span>
                   <span className="font-semibold text-gray-800">12 days</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between font-sans">
                   <span className="text-gray-600">Average Score</span>
                   <span className="font-semibold text-gray-800">85%</span>
                 </div>
@@ -120,11 +120,11 @@ const Profile = () => {
           <div className="lg:col-span-2 space-y-6">
             {/* Skills Progress */}
             <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6">Skills Progress</h3>
+              <h3 className="text-xl font-heading font-semibold text-gray-800 mb-6">Skills Progress</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {skillsData.map((skill, index) => (
                   <div key={index}>
-                    <div className="flex justify-between mb-2">
+                    <div className="flex justify-between mb-2 font-sans">
                       <span className="text-sm font-medium text-gray-700">{skill.name}</span>
                       <span className="text-sm text-gray-600">{skill.level}%</span>
                     </div>
@@ -141,7 +141,7 @@ const Profile = () => {
 
             {/* Achievements */}
             <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6">Achievements</h3>
+              <h3 className="text-xl font-heading font-semibold text-gray-800 mb-6">Achievements</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {achievements.map((achievement, index) => {
                   const Icon = achievement.icon;
@@ -163,17 +163,17 @@ const Profile = () => {
                           <Icon className="h-5 w-5" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-800">{achievement.title}</h4>
-                          <p className="text-sm text-gray-600">{achievement.description}</p>
+                          <h4 className="font-heading font-semibold text-gray-800">{achievement.title}</h4>
+                          <p className="text-sm text-gray-600 font-sans">{achievement.description}</p>
                         </div>
                       </div>
                       {achievement.earned ? (
-                        <div className="text-sm text-rose-600 font-medium">
+                        <div className="text-sm text-rose-600 font-sans font-medium">
                           Earned {achievement.date}
                         </div>
                       ) : (
                         <div>
-                          <div className="flex justify-between text-sm mb-1">
+                          <div className="flex justify-between text-sm mb-1 font-sans">
                             <span className="text-gray-600">Progress</span>
                             <span className="text-gray-600">{achievement.progress}%</span>
                           </div>
@@ -193,15 +193,15 @@ const Profile = () => {
 
             {/* Activity Chart */}
             <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6">Activity Overview</h3>
+              <h3 className="text-xl font-heading font-semibold text-gray-800 mb-6">Activity Overview</h3>
               <div className="space-y-4">
                 {activityData.map((data, index) => (
                   <div key={index} className="flex items-center space-x-4">
-                    <div className="w-12 text-sm text-gray-600 font-medium">{data.month}</div>
+                    <div className="w-12 text-sm text-gray-600 font-sans font-medium">{data.month}</div>
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-1">
                         <Code className="h-4 w-4 text-rose-600" />
-                        <span className="text-sm text-gray-600">Problems: {data.problems}</span>
+                        <span className="text-sm text-gray-600 font-sans">Problems: {data.problems}</span>
                       </div>
                       <div className="w-full bg-rose-200 rounded-full h-2 mb-2">
                         <div
@@ -211,7 +211,7 @@ const Profile = () => {
                       </div>
                       <div className="flex items-center space-x-2 mb-1">
                         <Brain className="h-4 w-4 text-indigo-600" />
-                        <span className="text-sm text-gray-600">Interviews: {data.interviews}</span>
+                        <span className="text-sm text-gray-600 font-sans">Interviews: {data.interviews}</span>
                       </div>
                       <div className="w-full bg-rose-200 rounded-full h-2">
                         <div

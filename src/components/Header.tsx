@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
             <div className="bg-gradient-to-r from-rose-400 to-indigo-400 p-2 rounded-lg shadow-md">
               <Code className="h-6 w-6 text-white" />
             </div>
-            <span className="text-2xl font-heading font-semibold bg-gradient-to-r from-rose-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="text-2xl font-heading font-bold bg-gradient-to-r from-rose-500 to-indigo-500 bg-clip-text text-transparent">
               Prepify
             </span>
           </Link>

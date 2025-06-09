@@ -35,11 +35,11 @@ const Register = () => {
             <div className="bg-gradient-to-r from-rose-400 to-indigo-400 p-3 rounded-lg shadow-md">
               <Code className="h-8 w-8 text-white" />
             </div>
-            <span className="text-3xl font-heading font-semibold bg-gradient-to-r from-rose-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="text-3xl font-heading font-bold bg-gradient-to-r from-rose-500 to-indigo-500 bg-clip-text text-transparent">
               Prepify
             </span>
           </Link>
-          <h2 className="text-3xl font-heading font-semibold text-gray-800">Create your account</h2>
+          <h2 className="text-3xl font-heading font-bold text-gray-800">Create your account</h2>
           <p className="mt-2 text-gray-600 font-sans">Start your interview preparation journey today</p>
         </div>
 

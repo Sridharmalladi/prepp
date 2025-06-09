@@ -83,7 +83,7 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-heading font-semibold text-gray-800">Dashboard</h1>
+          <h1 className="text-3xl font-heading font-bold text-gray-800">Dashboard</h1>
           <p className="text-gray-600 mt-2 font-sans">Track your progress and continue your interview preparation journey</p>
         </div>
 
@@ -98,7 +98,7 @@ const Dashboard = () => {
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <div className="text-2xl font-heading font-semibold text-gray-800 mb-1">{stat.value}</div>
+                <div className="text-2xl font-heading font-bold text-gray-800 mb-1">{stat.value}</div>
                 <div className="text-sm text-gray-600 mb-2 font-sans">{stat.title}</div>
                 <div className="text-sm text-rose-600 font-sans font-medium">{stat.change}</div>
               </div>
@@ -109,7 +109,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Recent Activity */}
           <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-            <h2 className="text-xl font-heading font-medium text-gray-800 mb-6">Recent Activity</h2>
+            <h2 className="text-xl font-heading font-semibold text-gray-800 mb-6">Recent Activity</h2>
             <div className="space-y-4">
               {recentActivity.map((activity, index) => (
                 <div key={index} className="flex items-center p-4 bg-rose-50 rounded-lg border border-rose-200">
@@ -141,7 +141,7 @@ const Dashboard = () => {
 
           {/* Upcoming Tasks */}
           <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-            <h2 className="text-xl font-heading font-medium text-gray-800 mb-6">Upcoming Tasks</h2>
+            <h2 className="text-xl font-heading font-semibold text-gray-800 mb-6">Upcoming Tasks</h2>
             <div className="space-y-4">
               {upcomingTasks.map((task, index) => (
                 <div key={index} className="flex items-center justify-between p-4 bg-rose-50 rounded-lg border border-rose-200">
@@ -169,7 +169,7 @@ const Dashboard = () => {
 
         {/* Performance Insights */}
         <div className="mt-8 bg-white p-6 rounded-xl shadow-lg border border-rose-200">
-          <h2 className="text-xl font-heading font-medium text-gray-800 mb-6">Performance Insights</h2>
+          <h2 className="text-xl font-heading font-semibold text-gray-800 mb-6">Performance Insights</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <div className="flex justify-between text-sm mb-2 font-sans">
