@@ -37,7 +37,7 @@ function AppContent() {
       />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/coding" element={<CodingPractice />} />
           <Route path="/interview" element={<MockInterview />} />

@@ -2,22 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Brain, Target, Users, ArrowRight, CheckCircle, Star } from 'lucide-react';
 
-const Home = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+interface HomeProps {
+  isDarkMode: boolean;
+  onToggleTheme: () => void;
+}
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-  };
-
+const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
   const features = [
     {
       icon: Code,
