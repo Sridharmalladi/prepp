@@ -3,11 +3,11 @@ import { User, Mail, Calendar, Award, TrendingUp, Target, Code, Brain } from 'lu
 
 const Profile = () => {
   const skillsData = [
-    { name: 'Data Structures', level: 85, color: 'bg-pink-600' },
+    { name: 'Data Structures', level: 85, color: 'bg-rose-600' },
     { name: 'Algorithms', level: 78, color: 'bg-indigo-600' },
     { name: 'System Design', level: 65, color: 'bg-rose-600' },
-    { name: 'Problem Solving', level: 92, color: 'bg-purple-600' },
-    { name: 'Communication', level: 88, color: 'bg-pink-500' },
+    { name: 'Problem Solving', level: 92, color: 'bg-indigo-600' },
+    { name: 'Communication', level: 88, color: 'bg-rose-500' },
     { name: 'Code Quality', level: 75, color: 'bg-indigo-500' }
   ];
 
@@ -63,9 +63,9 @@ const Profile = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Profile Info */}
           <div className="lg:col-span-1">
-            <div className="bg-white p-6 rounded-xl shadow-lg mb-6 border border-pink-100">
+            <div className="bg-white p-6 rounded-xl shadow-lg mb-6 border border-rose-200">
               <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-r from-pink-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div className="w-24 h-24 bg-gradient-to-r from-rose-400 to-indigo-400 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <User className="h-12 w-12 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-800">John Doe</h2>
@@ -87,13 +87,13 @@ const Profile = () => {
                 </div>
               </div>
 
-              <button className="w-full mt-6 bg-gradient-to-r from-pink-400 to-indigo-500 text-white py-2 rounded-lg font-medium hover:from-pink-500 hover:to-indigo-600 transition-all duration-200 shadow-md">
+              <button className="w-full mt-6 bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 py-2 rounded-lg font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md">
                 Edit Profile
               </button>
             </div>
 
             {/* Quick Stats */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-pink-100">
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Stats</h3>
               <div className="space-y-4">
                 <div className="flex justify-between">
@@ -119,7 +119,7 @@ const Profile = () => {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Skills Progress */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-pink-100">
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
               <h3 className="text-xl font-semibold text-gray-800 mb-6">Skills Progress</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {skillsData.map((skill, index) => (
@@ -128,7 +128,7 @@ const Profile = () => {
                       <span className="text-sm font-medium text-gray-700">{skill.name}</span>
                       <span className="text-sm text-gray-600">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-pink-200 rounded-full h-2">
+                    <div className="w-full bg-rose-200 rounded-full h-2">
                       <div
                         className={`${skill.color} h-2 rounded-full transition-all duration-500`}
                         style={{ width: `${skill.level}%` }}
@@ -140,7 +140,7 @@ const Profile = () => {
             </div>
 
             {/* Achievements */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-pink-100">
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
               <h3 className="text-xl font-semibold text-gray-800 mb-6">Achievements</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {achievements.map((achievement, index) => {
@@ -150,14 +150,14 @@ const Profile = () => {
                       key={index}
                       className={`p-4 rounded-lg border-2 ${
                         achievement.earned
-                          ? 'border-pink-200 bg-pink-50'
+                          ? 'border-rose-200 bg-rose-50'
                           : 'border-gray-200 bg-gray-50'
                       }`}
                     >
                       <div className="flex items-center space-x-3 mb-2">
                         <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                           achievement.earned
-                            ? 'bg-pink-600 text-white'
+                            ? 'bg-rose-600 text-white'
                             : 'bg-gray-400 text-white'
                         }`}>
                           <Icon className="h-5 w-5" />
@@ -168,7 +168,7 @@ const Profile = () => {
                         </div>
                       </div>
                       {achievement.earned ? (
-                        <div className="text-sm text-pink-600 font-medium">
+                        <div className="text-sm text-rose-600 font-medium">
                           Earned {achievement.date}
                         </div>
                       ) : (
@@ -177,9 +177,9 @@ const Profile = () => {
                             <span className="text-gray-600">Progress</span>
                             <span className="text-gray-600">{achievement.progress}%</span>
                           </div>
-                          <div className="w-full bg-pink-200 rounded-full h-2">
+                          <div className="w-full bg-rose-200 rounded-full h-2">
                             <div
-                              className="bg-gradient-to-r from-pink-400 to-indigo-500 h-2 rounded-full"
+                              className="bg-gradient-to-r from-rose-400 to-indigo-400 h-2 rounded-full"
                               style={{ width: `${achievement.progress}%` }}
                             ></div>
                           </div>
@@ -192,7 +192,7 @@ const Profile = () => {
             </div>
 
             {/* Activity Chart */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-pink-100">
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
               <h3 className="text-xl font-semibold text-gray-800 mb-6">Activity Overview</h3>
               <div className="space-y-4">
                 {activityData.map((data, index) => (
@@ -200,12 +200,12 @@ const Profile = () => {
                     <div className="w-12 text-sm text-gray-600 font-medium">{data.month}</div>
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-1">
-                        <Code className="h-4 w-4 text-pink-600" />
+                        <Code className="h-4 w-4 text-rose-600" />
                         <span className="text-sm text-gray-600">Problems: {data.problems}</span>
                       </div>
-                      <div className="w-full bg-pink-200 rounded-full h-2 mb-2">
+                      <div className="w-full bg-rose-200 rounded-full h-2 mb-2">
                         <div
-                          className="bg-gradient-to-r from-pink-400 to-rose-500 h-2 rounded-full"
+                          className="bg-gradient-to-r from-rose-400 to-rose-500 h-2 rounded-full"
                           style={{ width: `${(data.problems / 40) * 100}%` }}
                         ></div>
                       </div>
@@ -213,9 +213,9 @@ const Profile = () => {
                         <Brain className="h-4 w-4 text-indigo-600" />
                         <span className="text-sm text-gray-600">Interviews: {data.interviews}</span>
                       </div>
-                      <div className="w-full bg-pink-200 rounded-full h-2">
+                      <div className="w-full bg-rose-200 rounded-full h-2">
                         <div
-                          className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full"
+                          className="bg-gradient-to-r from-indigo-400 to-indigo-500 h-2 rounded-full"
                           style={{ width: `${(data.interviews / 10) * 100}%` }}
                         ></div>
                       </div>

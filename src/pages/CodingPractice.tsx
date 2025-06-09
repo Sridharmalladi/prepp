@@ -83,9 +83,9 @@ const CodingPractice = () => {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'Easy': return 'text-pink-600 bg-pink-100';
+      case 'Easy': return 'text-rose-600 bg-rose-100';
       case 'Medium': return 'text-indigo-600 bg-indigo-100';
-      case 'Hard': return 'text-rose-600 bg-rose-100';
+      case 'Hard': return 'text-rose-700 bg-rose-100';
       default: return 'text-gray-600 bg-gray-100';
     }
   };
@@ -101,17 +101,17 @@ const CodingPractice = () => {
 
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-pink-100">
+          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-bold text-gray-800">47</div>
                 <div className="text-sm text-gray-600">Problems Solved</div>
               </div>
-              <CheckCircle className="h-8 w-8 text-pink-600" />
+              <CheckCircle className="h-8 w-8 text-rose-600" />
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-pink-100">
+          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-bold text-gray-800">156</div>
@@ -121,7 +121,7 @@ const CodingPractice = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-pink-100">
+          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-bold text-gray-800">78%</div>
@@ -131,19 +131,19 @@ const CodingPractice = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-pink-100">
+          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-bold text-gray-800">12</div>
                 <div className="text-sm text-gray-600">Day Streak</div>
               </div>
-              <Clock className="h-8 w-8 text-purple-600" />
+              <Clock className="h-8 w-8 text-indigo-600" />
             </div>
           </div>
         </div>
 
         {/* Filters */}
-        <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-pink-100">
+        <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-rose-200">
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
             <div className="flex-1">
@@ -154,7 +154,7 @@ const CodingPractice = () => {
                   placeholder="Search problems..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent"
                 />
               </div>
             </div>
@@ -165,7 +165,7 @@ const CodingPractice = () => {
               <select
                 value={selectedDifficulty}
                 onChange={(e) => setSelectedDifficulty(e.target.value)}
-                className="border border-pink-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                className="border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent"
               >
                 {difficulties.map(difficulty => (
                   <option key={difficulty} value={difficulty}>
@@ -180,7 +180,7 @@ const CodingPractice = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="border border-pink-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                className="border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>
@@ -195,16 +195,16 @@ const CodingPractice = () => {
         {/* Problems List */}
         <div className="space-y-4">
           {filteredProblems.map((problem) => (
-            <div key={problem.id} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-pink-100 hover:border-pink-300">
+            <div key={problem.id} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-rose-200 hover:border-rose-300">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
                     <h3 className="text-xl font-semibold text-gray-800">{problem.title}</h3>
-                    {problem.solved && <CheckCircle className="h-5 w-5 text-pink-600" />}
+                    {problem.solved && <CheckCircle className="h-5 w-5 text-rose-600" />}
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(problem.difficulty)}`}>
                       {problem.difficulty}
                     </span>
-                    <span className="px-2 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-medium">
+                    <span className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">
                       {problem.category}
                     </span>
                   </div>
@@ -220,7 +220,7 @@ const CodingPractice = () => {
                 </div>
                 
                 <div className="mt-4 lg:mt-0 lg:ml-6">
-                  <button className="bg-gradient-to-r from-pink-400 to-indigo-500 text-white px-6 py-3 rounded-lg font-medium hover:from-pink-500 hover:to-indigo-600 transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2">
+                  <button className="bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 px-6 py-3 rounded-lg font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2">
                     <Code className="h-5 w-5" />
                     <span>{problem.solved ? 'Solve Again' : 'Start Solving'}</span>
                   </button>

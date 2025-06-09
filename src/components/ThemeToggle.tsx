@@ -12,19 +12,19 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDark, onToggle }) => {
       onClick={onToggle}
       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
         isDark 
-          ? 'bg-gray-700 focus:ring-rose-400' 
-          : 'bg-pink-200 focus:ring-indigo-500'
+          ? 'bg-gray-600 focus:ring-rose-300' 
+          : 'bg-rose-300 focus:ring-indigo-400'
       }`}
     >
       <span
         className={`inline-block h-4 w-4 transform rounded-full transition-transform duration-300 flex items-center justify-center ${
           isDark 
-            ? 'translate-x-6 bg-rose-400 shadow-lg' 
-            : 'translate-x-1 bg-white shadow-md'
+            ? 'translate-x-6 bg-rose-300 shadow-md' 
+            : 'translate-x-1 bg-white shadow-sm'
         }`}
       >
         {/* Sun icon - shows in LIGHT mode (when toggle is on the left) */}
-        {!isDark && <Sun className="h-3 w-3 text-pink-500" />}
+        {!isDark && <Sun className="h-3 w-3 text-rose-500" />}
         {/* Moon icon - shows in DARK mode (when toggle is on the right) */}
         {isDark && <Moon className="h-3 w-3 text-gray-100" />}
       </span>
