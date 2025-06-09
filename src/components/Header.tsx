@@ -28,10 +28,10 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-pink-500 to-indigo-500 p-2 rounded-lg">
+            <div className="bg-gradient-to-r from-blue-500 to-yellow-400 p-2 rounded-lg shadow-md">
               <Code className="h-6 w-6 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-yellow-500 bg-clip-text text-transparent">
               Prepify
             </span>
           </Link>
@@ -46,8 +46,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
                   to={item.href}
                   className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-pink-600 bg-pink-50'
-                      : 'text-gray-700 hover:text-pink-600 hover:bg-gray-50'
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -63,13 +63,13 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
             <div className="hidden md:flex items-center space-x-4">
               <Link
                 to="/login"
-                className="text-gray-700 hover:text-pink-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                className="bg-gradient-to-r from-pink-500 to-indigo-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-pink-600 hover:to-indigo-600 transition-all duration-200 shadow-md hover:shadow-lg"
+                className="bg-gradient-to-r from-blue-500 to-yellow-400 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-blue-600 hover:to-yellow-500 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 Get Started
               </Link>
@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-pink-600 hover:bg-gray-50 transition-colors duration-200"
+              className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -105,8 +105,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
                     onClick={() => setIsMenuOpen(false)}
                     className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                       isActive(item.href)
-                        ? 'text-pink-600 bg-pink-50'
-                        : 'text-gray-700 hover:text-pink-600 hover:bg-gray-50'
+                        ? 'text-blue-600 bg-blue-50'
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                     }`}
                   >
                     <Icon className="h-5 w-5" />
@@ -118,14 +118,14 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
                 <Link
                   to="/login"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/register"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block px-3 py-2 text-base font-medium bg-gradient-to-r from-pink-500 to-indigo-500 text-white rounded-md hover:from-pink-600 hover:to-indigo-600 transition-all duration-200"
+                  className="block px-3 py-2 text-base font-medium bg-gradient-to-r from-blue-500 to-yellow-400 text-white rounded-md hover:from-blue-600 hover:to-yellow-500 transition-all duration-200"
                 >
                   Get Started
                 </Link>

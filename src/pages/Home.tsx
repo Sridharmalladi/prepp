@@ -13,25 +13,25 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
       icon: Code,
       title: 'Coding Practice',
       description: 'Solve algorithmic problems with our interactive code editor and instant feedback.',
-      color: isDarkMode ? 'from-pink-400 to-rose-400' : 'from-pink-400 to-rose-500'
+      color: isDarkMode ? 'from-blue-400 to-sky-400' : 'from-blue-500 to-sky-500'
     },
     {
       icon: Brain,
       title: 'Mock Interviews',
       description: 'Practice with AI-powered mock interviews tailored to your target companies.',
-      color: isDarkMode ? 'from-indigo-400 to-purple-400' : 'from-indigo-500 to-purple-500'
+      color: isDarkMode ? 'from-yellow-300 to-amber-300' : 'from-yellow-400 to-amber-400'
     },
     {
       icon: Target,
       title: 'Skill Assessment',
       description: 'Track your progress and identify areas for improvement with detailed analytics.',
-      color: isDarkMode ? 'from-rose-400 to-pink-400' : 'from-rose-500 to-pink-500'
+      color: isDarkMode ? 'from-blue-400 to-indigo-400' : 'from-blue-500 to-indigo-500'
     },
     {
       icon: Users,
       title: 'Community',
       description: 'Connect with other job seekers and share interview experiences.',
-      color: isDarkMode ? 'from-purple-400 to-indigo-400' : 'from-purple-500 to-indigo-500'
+      color: isDarkMode ? 'from-yellow-300 to-yellow-400' : 'from-yellow-400 to-yellow-500'
     }
   ];
 
@@ -68,15 +68,15 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
   const testimonials = getTestimonials();
 
   const themeClasses = {
-    background: isDarkMode ? 'bg-gray-900' : 'bg-orange-50',
-    cardBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
-    textPrimary: isDarkMode ? 'text-gray-100' : 'text-gray-800',
+    background: isDarkMode ? 'bg-slate-900' : 'bg-gray-50',
+    cardBg: isDarkMode ? 'bg-slate-800' : 'bg-white',
+    textPrimary: isDarkMode ? 'text-gray-100' : 'text-gray-900',
     textSecondary: isDarkMode ? 'text-gray-300' : 'text-gray-600',
-    border: isDarkMode ? 'border-gray-700' : 'border-orange-100',
-    heroBg: isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-orange-50 via-white to-pink-50',
-    statsBg: isDarkMode ? 'bg-gradient-to-r from-rose-500 to-indigo-400' : 'bg-gradient-to-r from-pink-400 to-indigo-500',
-    sectionBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
-    testimonialsBg: isDarkMode ? 'bg-gray-900' : 'bg-orange-50'
+    border: isDarkMode ? 'border-slate-700' : 'border-gray-100',
+    heroBg: isDarkMode ? 'bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900' : 'bg-gradient-to-br from-gray-50 via-blue-50 to-yellow-50',
+    statsBg: isDarkMode ? 'bg-gradient-to-r from-blue-600 to-yellow-500' : 'bg-gradient-to-r from-blue-500 to-yellow-400',
+    sectionBg: isDarkMode ? 'bg-slate-800' : 'bg-white',
+    testimonialsBg: isDarkMode ? 'bg-slate-900' : 'bg-gray-50'
   };
 
   return (
@@ -87,7 +87,7 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
           <div className="text-center">
             <h1 className={`text-4xl md:text-6xl font-bold ${themeClasses.textPrimary} mb-6 transition-colors duration-300`}>
               Master Your{' '}
-              <span className={`bg-gradient-to-r ${isDarkMode ? 'from-rose-400 to-indigo-400' : 'from-pink-500 to-indigo-600'} bg-clip-text text-transparent`}>
+              <span className={`bg-gradient-to-r ${isDarkMode ? 'from-blue-400 to-yellow-300' : 'from-blue-600 to-yellow-500'} bg-clip-text text-transparent`}>
                 Interview Skills
               </span>
             </h1>
@@ -99,8 +99,8 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
               <Link
                 to="/register"
                 className={`${isDarkMode 
-                  ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-gray-100 hover:from-rose-400 hover:to-pink-400' 
-                  : 'bg-gradient-to-r from-pink-400 to-rose-500 text-slate-800 hover:from-pink-500 hover:to-rose-600'
+                  ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-400 hover:to-blue-500' 
+                  : 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700'
                 } px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1`}
               >
                 Start Preparing Now
@@ -109,8 +109,8 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
               <Link
                 to="/dashboard"
                 className={`border-2 ${isDarkMode 
-                  ? 'border-indigo-400 text-indigo-300 hover:border-indigo-300 hover:text-indigo-200' 
-                  : 'border-indigo-500 text-indigo-600 hover:border-indigo-600 hover:text-indigo-700'
+                  ? 'border-yellow-400 text-yellow-300 hover:border-yellow-300 hover:text-yellow-200 hover:bg-yellow-400/10' 
+                  : 'border-yellow-500 text-yellow-600 hover:border-yellow-600 hover:text-yellow-700 hover:bg-yellow-50'
                 } px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200`}
               >
                 View Dashboard
@@ -138,9 +138,9 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
               return (
                 <div
                   key={index}
-                  className={`${themeClasses.cardBg} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border ${themeClasses.border}`}
+                  className={`${themeClasses.cardBg} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border ${themeClasses.border} hover:border-blue-300`}
                 >
-                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center mb-6`}>
+                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center mb-6 shadow-md`}>
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                   <h3 className={`text-xl font-semibold ${themeClasses.textPrimary} mb-3 transition-colors duration-300`}>{feature.title}</h3>
@@ -156,16 +156,16 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
       <section className={`py-20 px-4 sm:px-6 lg:px-8 ${themeClasses.statsBg} transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">10,000+</div>
+            <div className="transform hover:scale-105 transition-transform duration-200">
+              <div className="text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg">10,000+</div>
               <div className="text-xl opacity-90">Students Prepared</div>
             </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">500+</div>
+            <div className="transform hover:scale-105 transition-transform duration-200">
+              <div className="text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg">500+</div>
               <div className="text-xl opacity-90">Coding Problems</div>
             </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">95%</div>
+            <div className="transform hover:scale-105 transition-transform duration-200">
+              <div className="text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg">95%</div>
               <div className="text-xl opacity-90">Success Rate</div>
             </div>
           </div>
@@ -188,7 +188,7 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`${themeClasses.cardBg} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border ${themeClasses.border}`}
+                className={`${themeClasses.cardBg} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border ${themeClasses.border} hover:border-yellow-300 transform hover:-translate-y-1`}
               >
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -218,8 +218,8 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
           <Link
             to="/register"
             className={`${isDarkMode 
-              ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-gray-100 hover:from-rose-400 hover:to-pink-400' 
-              : 'bg-gradient-to-r from-pink-400 to-rose-500 text-slate-800 hover:from-pink-500 hover:to-rose-600'
+              ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-400 hover:to-blue-500' 
+              : 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700'
             } px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center`}
           >
             Get Started for Free
