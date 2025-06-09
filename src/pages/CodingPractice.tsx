@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Code, Play, CheckCircle, Clock, Star, Filter, Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Code, Play, CheckCircle, Clock, Star, Filter, Search, Sparkles } from 'lucide-react';
 
 const CodingPractice = () => {
+  const navigate = useNavigate();
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const problems = [
     {
@@ -69,8 +72,9 @@ const CodingPractice = () => {
     }
   ];
 
-  const categories = ['all', 'Array', 'String', 'Binary Search', 'Stack', 'Tree', 'Dynamic Programming'];
+  const categories = ['all', 'Array', 'String', 'Binary Search', 'Stack', 'Tree', 'Dynamic Programming', 'Graph', 'Linked List', 'Hash Table'];
   const difficulties = ['all', 'Easy', 'Medium', 'Hard'];
+  const companies = ['Google', 'Meta', 'Amazon', 'Apple', 'Netflix', 'Microsoft', 'Uber', 'Airbnb'];
 
   const filteredProblems = problems.filter(problem => {
     const matchesDifficulty = selectedDifficulty === 'all' || problem.difficulty === selectedDifficulty;
@@ -80,6 +84,26 @@ const CodingPractice = () => {
     
     return matchesDifficulty && matchesCategory && matchesSearch;
   });
+
+  const generateCustomProblem = () => {
+    if (selectedDifficulty === 'all' || selectedCategory === 'all') {
+      alert('Please select a specific difficulty and category to generate a custom problem.');
+      return;
+    }
+
+    setIsGenerating(true);
+    
+    // Navigate to problem solver with generation parameters
+    setTimeout(() => {
+      navigate('/coding-problem', {
+        state: {
+          difficulty: selectedDifficulty,
+          category: selectedCategory,
+          company: companies[Math.floor(Math.random() * companies.length)]
+        }
+      });
+    }, 1000);
+  };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -91,17 +115,17 @@ const CodingPractice = () => {
   };
 
   return (
-    <div className="min-h-screen bg-orange-50 py-8">
+    <div className="min-h-screen bg-orange-50/60 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-heading font-bold text-gray-800 mb-2">Coding Practice</h1>
-          <p className="text-gray-600 font-sans">Sharpen your coding skills with our curated problem sets</p>
+          <p className="text-gray-600 font-sans">Sharpen your coding skills with our curated problem sets and AI-generated challenges</p>
         </div>
 
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+          <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-heading font-bold text-gray-800">47</div>
@@ -111,7 +135,7 @@ const CodingPractice = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+          <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-heading font-bold text-gray-800">156</div>
@@ -121,7 +145,7 @@ const CodingPractice = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+          <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-heading font-bold text-gray-800">78%</div>
@@ -131,7 +155,7 @@ const CodingPractice = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+          <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-heading font-bold text-gray-800">12</div>
@@ -142,8 +166,38 @@ const CodingPractice = () => {
           </div>
         </div>
 
+        {/* AI Problem Generator */}
+        <div className="bg-gradient-to-r from-rose-400/80 to-indigo-400/80 p-6 rounded-xl shadow-lg mb-8 text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-heading font-bold mb-2 flex items-center">
+                <Sparkles className="h-6 w-6 mr-2" />
+                AI-Powered Problem Generator
+              </h2>
+              <p className="font-sans opacity-90">Generate custom coding problems tailored to your skill level and target companies</p>
+            </div>
+            <button
+              onClick={generateCustomProblem}
+              disabled={isGenerating || selectedDifficulty === 'all' || selectedCategory === 'all'}
+              className="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-lg font-sans font-semibold hover:bg-white/30 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+            >
+              {isGenerating ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  <span>Generating...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="h-5 w-5" />
+                  <span>Generate Problem</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+
         {/* Filters */}
-        <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-rose-200">
+        <div className="bg-white/90 p-6 rounded-xl shadow-lg mb-8 border border-rose-200/60">
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
             <div className="flex-1">
@@ -154,7 +208,7 @@ const CodingPractice = () => {
                   placeholder="Search problems..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-rose-200 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
+                  className="w-full pl-10 pr-4 py-2 border border-rose-200/60 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
                 />
               </div>
             </div>
@@ -165,7 +219,7 @@ const CodingPractice = () => {
               <select
                 value={selectedDifficulty}
                 onChange={(e) => setSelectedDifficulty(e.target.value)}
-                className="border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
+                className="border border-rose-200/60 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
               >
                 {difficulties.map(difficulty => (
                   <option key={difficulty} value={difficulty}>
@@ -180,7 +234,7 @@ const CodingPractice = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
+                className="border border-rose-200/60 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>
@@ -195,7 +249,7 @@ const CodingPractice = () => {
         {/* Problems List */}
         <div className="space-y-4">
           {filteredProblems.map((problem) => (
-            <div key={problem.id} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-rose-200 hover:border-rose-300">
+            <div key={problem.id} className="bg-white/90 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-rose-200/60 hover:border-rose-300/80">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
@@ -220,7 +274,16 @@ const CodingPractice = () => {
                 </div>
                 
                 <div className="mt-4 lg:mt-0 lg:ml-6">
-                  <button className="bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 px-6 py-3 rounded-lg font-sans font-medium hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2">
+                  <button 
+                    onClick={() => navigate('/coding-problem', { 
+                      state: { 
+                        difficulty: problem.difficulty, 
+                        category: problem.category,
+                        problemData: problem 
+                      } 
+                    })}
+                    className="bg-gradient-to-r from-rose-400/80 to-indigo-400/80 text-slate-800 px-6 py-3 rounded-lg font-sans font-medium hover:from-rose-500/80 hover:to-indigo-500/80 transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2"
+                  >
                     <Code className="h-5 w-5" />
                     <span>{problem.solved ? 'Solve Again' : 'Start Solving'}</span>
                   </button>

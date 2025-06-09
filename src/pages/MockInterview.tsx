@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { Brain, Play, Video, Mic, Calendar, Clock, Star, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Brain, Play, Video, Mic, Calendar, Clock, Star, Users, Sparkles } from 'lucide-react';
 import FeedbackModal from '../components/FeedbackModal';
 
 const MockInterview = () => {
+  const navigate = useNavigate();
   const [selectedType, setSelectedType] = useState('technical');
+  const [selectedCompany, setSelectedCompany] = useState('Google');
+  const [selectedLevel, setSelectedLevel] = useState('Mid Level (3-5 years)');
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const interviewTypes = [
     {
@@ -14,7 +19,7 @@ const MockInterview = () => {
       duration: '45-60 minutes',
       difficulty: 'Medium to Hard',
       icon: Brain,
-      color: 'from-rose-400 to-rose-500'
+      color: 'from-rose-400/80 to-rose-500/80'
     },
     {
       id: 'behavioral',
@@ -23,7 +28,7 @@ const MockInterview = () => {
       duration: '30-45 minutes',
       difficulty: 'Easy to Medium',
       icon: Users,
-      color: 'from-indigo-400 to-indigo-500'
+      color: 'from-indigo-400/80 to-indigo-500/80'
     },
     {
       id: 'system-design',
@@ -32,9 +37,12 @@ const MockInterview = () => {
       duration: '60-90 minutes',
       difficulty: 'Hard',
       icon: Video,
-      color: 'from-rose-400 to-rose-500'
+      color: 'from-rose-400/80 to-rose-500/80'
     }
   ];
+
+  const companies = ['Google', 'Meta', 'Amazon', 'Apple', 'Netflix', 'Microsoft', 'Uber', 'Airbnb'];
+  const experienceLevels = ['Entry Level (0-2 years)', 'Mid Level (3-5 years)', 'Senior Level (6+ years)'];
 
   const recentInterviews = [
     {
@@ -78,6 +86,21 @@ const MockInterview = () => {
     }
   ];
 
+  const startInterview = () => {
+    setIsGenerating(true);
+    
+    // Navigate to interview session with parameters
+    setTimeout(() => {
+      navigate('/interview-session', {
+        state: {
+          type: selectedType,
+          company: selectedCompany,
+          experienceLevel: selectedLevel
+        }
+      });
+    }, 1500);
+  };
+
   const handleFeedbackSubmit = (feedback: { rating: number; comment: string; name: string; role: string }) => {
     // Save feedback to localStorage
     const existingFeedback = localStorage.getItem('userFeedback');
@@ -99,7 +122,7 @@ const MockInterview = () => {
   };
 
   return (
-    <div className="min-h-screen bg-orange-50 py-8">
+    <div className="min-h-screen bg-orange-50/60 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
@@ -109,7 +132,7 @@ const MockInterview = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+          <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-heading font-bold text-gray-800">8</div>
@@ -119,7 +142,7 @@ const MockInterview = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+          <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-heading font-bold text-gray-800">85%</div>
@@ -129,7 +152,7 @@ const MockInterview = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+          <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-heading font-bold text-gray-800">12h</div>
@@ -139,7 +162,7 @@ const MockInterview = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+          <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-heading font-bold text-gray-800">2</div>
@@ -151,9 +174,22 @@ const MockInterview = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Interview Types */}
+          {/* Interview Setup */}
           <div className="lg:col-span-2">
-            <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-rose-200">
+            {/* AI Interview Generator */}
+            <div className="bg-gradient-to-r from-rose-400/80 to-indigo-400/80 p-6 rounded-xl shadow-lg mb-8 text-white">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-heading font-bold mb-2 flex items-center">
+                    <Sparkles className="h-6 w-6 mr-2" />
+                    AI-Powered Interview Generator
+                  </h2>
+                  <p className="font-sans opacity-90">Generate personalized interview questions based on company and role</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/90 p-6 rounded-xl shadow-lg mb-8 border border-rose-200/60">
               <h2 className="text-xl font-heading font-semibold text-gray-800 mb-6">Start New Interview</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -165,8 +201,8 @@ const MockInterview = () => {
                       onClick={() => setSelectedType(type.id)}
                       className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
                         selectedType === type.id
-                          ? 'border-rose-400 bg-rose-50'
-                          : 'border-rose-200 hover:border-rose-300'
+                          ? 'border-rose-400 bg-rose-50/80'
+                          : 'border-rose-200/60 hover:border-rose-300/80'
                       }`}
                     >
                       <div className={`w-10 h-10 bg-gradient-to-r ${type.color} rounded-lg flex items-center justify-center mb-3 shadow-md`}>
@@ -183,43 +219,61 @@ const MockInterview = () => {
                 })}
               </div>
 
-              <div className="border-t border-rose-200 pt-6">
+              <div className="border-t border-rose-200/60 pt-6">
                 <h3 className="font-heading font-semibold text-gray-800 mb-4">Interview Settings</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div>
                     <label className="block text-sm font-sans font-medium text-gray-700 mb-2">Company Focus</label>
-                    <select className="w-full border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans">
-                      <option>Google</option>
-                      <option>Meta</option>
-                      <option>Amazon</option>
-                      <option>Apple</option>
-                      <option>Netflix</option>
-                      <option>Microsoft</option>
+                    <select 
+                      value={selectedCompany}
+                      onChange={(e) => setSelectedCompany(e.target.value)}
+                      className="w-full border border-rose-200/60 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
+                    >
+                      {companies.map(company => (
+                        <option key={company} value={company}>{company}</option>
+                      ))}
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-sans font-medium text-gray-700 mb-2">Experience Level</label>
-                    <select className="w-full border border-rose-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans">
-                      <option>Entry Level (0-2 years)</option>
-                      <option>Mid Level (3-5 years)</option>
-                      <option>Senior Level (6+ years)</option>
+                    <select 
+                      value={selectedLevel}
+                      onChange={(e) => setSelectedLevel(e.target.value)}
+                      className="w-full border border-rose-200/60 rounded-lg px-3 py-2 focus:ring-2 focus:ring-rose-400 focus:border-transparent font-sans"
+                    >
+                      {experienceLevels.map(level => (
+                        <option key={level} value={level}>{level}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
 
-                <button className="w-full bg-gradient-to-r from-rose-400 to-indigo-400 text-slate-800 py-3 rounded-lg font-sans font-semibold hover:from-rose-500 hover:to-indigo-500 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center space-x-2">
-                  <Play className="h-5 w-5" />
-                  <span>Start Interview</span>
+                <button 
+                  onClick={startInterview}
+                  disabled={isGenerating}
+                  className="w-full bg-gradient-to-r from-rose-400/80 to-indigo-400/80 text-slate-800 py-3 rounded-lg font-sans font-semibold hover:from-rose-500/80 hover:to-indigo-500/80 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center space-x-2 disabled:opacity-50"
+                >
+                  {isGenerating ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-slate-800"></div>
+                      <span>Generating Interview...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play className="h-5 w-5" />
+                      <span>Start Interview</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>
 
             {/* Recent Interviews */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+            <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
               <h2 className="text-xl font-heading font-semibold text-gray-800 mb-6">Recent Interviews</h2>
               <div className="space-y-4">
                 {recentInterviews.map((interview, index) => (
-                  <div key={index} className="p-4 bg-rose-50 rounded-lg border border-rose-200">
+                  <div key={index} className="p-4 bg-rose-50/80 rounded-lg border border-rose-200/60">
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <h3 className="font-heading font-semibold text-gray-800">{interview.type} - {interview.company}</h3>
@@ -253,11 +307,11 @@ const MockInterview = () => {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Upcoming Interviews */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+            <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
               <h2 className="text-xl font-heading font-semibold text-gray-800 mb-4">Upcoming</h2>
               <div className="space-y-3">
                 {upcomingInterviews.map((interview, index) => (
-                  <div key={index} className="p-3 bg-indigo-50 rounded-lg border border-indigo-200">
+                  <div key={index} className="p-3 bg-indigo-50/80 rounded-lg border border-indigo-200/60">
                     <div className="font-heading font-medium text-gray-800">{interview.type}</div>
                     <div className="text-sm text-gray-600 font-sans">{interview.company}</div>
                     <div className="text-sm text-indigo-600 font-sans font-medium">{interview.date} at {interview.time}</div>
@@ -267,7 +321,7 @@ const MockInterview = () => {
             </div>
 
             {/* Tips */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+            <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
               <h2 className="text-xl font-heading font-semibold text-gray-800 mb-4">Interview Tips</h2>
               <div className="space-y-3 text-sm text-gray-600 font-sans">
                 <div className="flex items-start space-x-2">
@@ -290,7 +344,7 @@ const MockInterview = () => {
             </div>
 
             {/* Performance Insights */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-rose-200">
+            <div className="bg-white/90 p-6 rounded-xl shadow-lg border border-rose-200/60">
               <h2 className="text-xl font-heading font-semibold text-gray-800 mb-4">Performance Insights</h2>
               <div className="space-y-4">
                 <div>
@@ -298,8 +352,8 @@ const MockInterview = () => {
                     <span>Problem Solving</span>
                     <span>85%</span>
                   </div>
-                  <div className="w-full bg-rose-200 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-rose-400 to-rose-500 h-2 rounded-full" style={{ width: '85%' }}></div>
+                  <div className="w-full bg-rose-200/60 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-rose-400/80 to-rose-500/80 h-2 rounded-full" style={{ width: '85%' }}></div>
                   </div>
                 </div>
                 <div>
@@ -307,8 +361,8 @@ const MockInterview = () => {
                     <span>Communication</span>
                     <span>92%</span>
                   </div>
-                  <div className="w-full bg-rose-200 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-indigo-400 to-indigo-500 h-2 rounded-full" style={{ width: '92%' }}></div>
+                  <div className="w-full bg-rose-200/60 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-indigo-400/80 to-indigo-500/80 h-2 rounded-full" style={{ width: '92%' }}></div>
                   </div>
                 </div>
                 <div>
@@ -316,8 +370,8 @@ const MockInterview = () => {
                     <span>Code Quality</span>
                     <span>78%</span>
                   </div>
-                  <div className="w-full bg-rose-200 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-rose-400 to-rose-500 h-2 rounded-full" style={{ width: '78%' }}></div>
+                  <div className="w-full bg-rose-200/60 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-rose-400/80 to-rose-500/80 h-2 rounded-full" style={{ width: '78%' }}></div>
                   </div>
                 </div>
               </div>

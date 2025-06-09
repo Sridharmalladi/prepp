@@ -4,7 +4,10 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import CodingPractice from './pages/CodingPractice';
+import CodingProblemSolver from './pages/CodingProblemSolver';
 import MockInterview from './pages/MockInterview';
+import InterviewSession from './pages/InterviewSession';
+import InterviewResults from './pages/InterviewResults';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -40,7 +43,10 @@ function AppContent() {
           <Route path="/" element={<Home isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/coding" element={<CodingPractice />} />
+          <Route path="/coding-problem" element={<CodingProblemSolver />} />
           <Route path="/interview" element={<MockInterview />} />
+          <Route path="/interview-session" element={<InterviewSession />} />
+          <Route path="/interview-results" element={<InterviewResults />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
