@@ -1,227 +1,195 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { MessageSquare, Play, FileText, Clock, User, Briefcase } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Code, Brain, Target, Users, ArrowRight, CheckCircle, Star } from 'lucide-react';
 
 const Home = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    jobDescription: '',
-    interviewType: 'behavioral',
-    duration: 'medium',
-    resume: ''
-  });
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleStartInterview = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      // Simulate API call to /api/interview/initialize
-      const response = await fetch('/api/interview/initialize', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // Store interview data and navigate to interview room
-        localStorage.setItem('currentInterview', JSON.stringify(data));
-        navigate(`/interview/${data.room_name}`);
-      } else {
-        // For demo purposes, simulate successful response
-        const mockData = {
-          interview_id: `int_${Date.now()}`,
-          room_name: `room_${Math.random().toString(36).substr(2, 9)}`,
-          status: 'initialized'
-        };
-        localStorage.setItem('currentInterview', JSON.stringify(mockData));
-        navigate(`/interview/${mockData.room_name}`);
-      }
-    } catch (error) {
-      // For demo purposes, simulate successful response
-      const mockData = {
-        interview_id: `int_${Date.now()}`,
-        room_name: `room_${Math.random().toString(36).substr(2, 9)}`,
-        status: 'initialized'
-      };
-      localStorage.setItem('currentInterview', JSON.stringify(mockData));
-      navigate(`/interview/${mockData.room_name}`);
-    } finally {
-      setIsLoading(false);
+  const features = [
+    {
+      icon: Code,
+      title: 'Coding Practice',
+      description: 'Solve algorithmic problems with our interactive code editor and instant feedback.',
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      icon: Brain,
+      title: 'Mock Interviews',
+      description: 'Practice with AI-powered mock interviews tailored to your target companies.',
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      icon: Target,
+      title: 'Skill Assessment',
+      description: 'Track your progress and identify areas for improvement with detailed analytics.',
+      color: 'from-green-500 to-emerald-500'
+    },
+    {
+      icon: Users,
+      title: 'Community',
+      description: 'Connect with other job seekers and share interview experiences.',
+      color: 'from-orange-500 to-red-500'
     }
-  };
+  ];
+
+  const testimonials = [
+    {
+      name: 'Sarah Chen',
+      role: 'Software Engineer at Google',
+      content: 'Prepify helped me land my dream job! The mock interviews were incredibly realistic.',
+      rating: 5
+    },
+    {
+      name: 'Michael Rodriguez',
+      role: 'Full Stack Developer at Meta',
+      content: 'The coding challenges perfectly prepared me for technical interviews.',
+      rating: 5
+    },
+    {
+      name: 'Emily Johnson',
+      role: 'Data Scientist at Netflix',
+      content: 'Amazing platform with comprehensive preparation materials.',
+      rating: 5
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-2xl">
-              <MessageSquare className="h-12 w-12 text-white" />
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            AI-Powered Interview
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
-              Practice Platform
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get personalized interview practice with AI feedback tailored to your specific job requirements and experience level.
-          </p>
-        </div>
-
-        {/* Main Form */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-          <form onSubmit={handleStartInterview} className="space-y-8">
-            {/* Job Description */}
-            <div>
-              <label htmlFor="jobDescription" className="flex items-center text-lg font-semibold text-gray-900 mb-3">
-                <Briefcase className="h-5 w-5 mr-2 text-blue-600" />
-                Job Description
-              </label>
-              <textarea
-                id="jobDescription"
-                name="jobDescription"
-                value={formData.jobDescription}
-                onChange={handleInputChange}
-                rows={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                placeholder="Paste the job description here. Include key requirements, responsibilities, and qualifications..."
-                required
-              />
-            </div>
-
-            {/* Interview Type and Duration */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="interviewType" className="flex items-center text-lg font-semibold text-gray-900 mb-3">
-                  <MessageSquare className="h-5 w-5 mr-2 text-purple-600" />
-                  Interview Type
-                </label>
-                <select
-                  id="interviewType"
-                  name="interviewType"
-                  value={formData.interviewType}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                >
-                  <option value="behavioral">Behavioral Interview</option>
-                  <option value="technical">Technical Interview</option>
-                </select>
-                <p className="text-sm text-gray-600 mt-2">
-                  {formData.interviewType === 'behavioral' 
-                    ? 'Focus on situational questions and soft skills'
-                    : 'Focus on technical knowledge and problem-solving'
-                  }
-                </p>
-              </div>
-
-              <div>
-                <label htmlFor="duration" className="flex items-center text-lg font-semibold text-gray-900 mb-3">
-                  <Clock className="h-5 w-5 mr-2 text-green-600" />
-                  Duration
-                </label>
-                <select
-                  id="duration"
-                  name="duration"
-                  value={formData.duration}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                >
-                  <option value="short">Short (15-20 minutes)</option>
-                  <option value="medium">Medium (30-45 minutes)</option>
-                  <option value="long">Long (60+ minutes)</option>
-                </select>
-                <p className="text-sm text-gray-600 mt-2">
-                  {formData.duration === 'short' && 'Quick practice session with 3-5 questions'}
-                  {formData.duration === 'medium' && 'Standard interview with 6-10 questions'}
-                  {formData.duration === 'long' && 'Comprehensive interview with 10+ questions'}
-                </p>
-              </div>
-            </div>
-
-            {/* Resume */}
-            <div>
-              <label htmlFor="resume" className="flex items-center text-lg font-semibold text-gray-900 mb-3">
-                <User className="h-5 w-5 mr-2 text-orange-600" />
-                Resume / Background
-              </label>
-              <textarea
-                id="resume"
-                name="resume"
-                value={formData.resume}
-                onChange={handleInputChange}
-                rows={8}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                placeholder="Paste your resume or provide a summary of your background, experience, and key achievements..."
-                required
-              />
-            </div>
-
-            {/* Start Button */}
-            <div className="pt-6">
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-3"
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+              Master Your{' '}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Interview Skills
+              </span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Comprehensive interview preparation platform with coding challenges, mock interviews, 
+              and personalized feedback to help you land your dream job.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/register"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                {isLoading ? (
-                  <>
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-                    <span>Initializing Interview...</span>
-                  </>
-                ) : (
-                  <>
-                    <Play className="h-6 w-6" />
-                    <span>Start Interview</span>
-                  </>
-                )}
-              </button>
+                Start Preparing Now
+                <ArrowRight className="inline-block ml-2 h-5 w-5" />
+              </Link>
+              <Link
+                to="/dashboard"
+                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-200"
+              >
+                View Dashboard
+              </Link>
             </div>
-          </form>
+          </div>
         </div>
+      </section>
 
-        {/* Features */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <MessageSquare className="h-8 w-8 text-blue-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">AI-Powered Questions</h3>
-            <p className="text-gray-600">Dynamic questions tailored to your specific job and experience level</p>
+      {/* Features Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Everything You Need to Succeed
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Our comprehensive platform provides all the tools and resources you need to ace your interviews.
+            </p>
           </div>
           
-          <div className="text-center">
-            <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FileText className="h-8 w-8 text-purple-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Detailed Feedback</h3>
-            <p className="text-gray-600">Comprehensive analysis of your responses with improvement suggestions</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Clock className="h-8 w-8 text-green-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Flexible Duration</h3>
-            <p className="text-gray-600">Choose from quick practice sessions to full-length interviews</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center mb-6`}>
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">10,000+</div>
+              <div className="text-xl opacity-90">Students Prepared</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">500+</div>
+              <div className="text-xl opacity-90">Coding Problems</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">95%</div>
+              <div className="text-xl opacity-90">Success Rate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Success Stories
+            </h2>
+            <p className="text-xl text-gray-600">
+              Hear from our students who landed their dream jobs
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-6 italic">"{testimonial.content}"</p>
+                <div>
+                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                  <div className="text-sm text-gray-500">{testimonial.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Ready to Land Your Dream Job?
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Join thousands of successful candidates who used Prepify to ace their interviews.
+          </p>
+          <Link
+            to="/register"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center"
+          >
+            Get Started for Free
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

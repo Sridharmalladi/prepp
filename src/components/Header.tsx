@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { MessageSquare, Menu, X, Home, BarChart3, MessageCircle, FileText } from 'lucide-react';
+import { Code, Brain, User, Menu, X, Home, BarChart3 } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,7 +8,10 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '/', icon: Home },
-    { name: 'Status Viewer', href: '/status', icon: BarChart3 },
+    { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
+    { name: 'Coding Practice', href: '/coding', icon: Code },
+    { name: 'Mock Interview', href: '/interview', icon: Brain },
+    { name: 'Profile', href: '/profile', icon: User },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -20,10 +23,10 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
-              <MessageSquare className="h-6 w-6 text-white" />
+              <Code className="h-6 w-6 text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              InterviewAI
+              Prepify
             </span>
           </Link>
 
@@ -47,6 +50,22 @@ const Header = () => {
               );
             })}
           </nav>
+
+          {/* Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link
+              to="/login"
+              className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/register"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg"
+            >
+              Get Started
+            </Link>
+          </div>
 
           {/* Mobile menu button */}
           <button
@@ -79,6 +98,22 @@ const Header = () => {
                   </Link>
                 );
               })}
+              <div className="pt-4 border-t border-gray-200 space-y-2">
+                <Link
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/register"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-3 py-2 text-base font-medium bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md hover:from-blue-700 hover:to-purple-700 transition-all duration-200"
+                >
+                  Get Started
+                </Link>
+              </div>
             </div>
           </div>
         )}
