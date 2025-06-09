@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Brain, Play, Video, Mic, Calendar, Clock, Star, Users } from 'lucide-react';
+import FeedbackModal from '../components/FeedbackModal';
 
 const MockInterview = () => {
   const [selectedType, setSelectedType] = useState('technical');
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
   const interviewTypes = [
     {
@@ -40,21 +42,24 @@ const MockInterview = () => {
       company: 'Google',
       date: '2 days ago',
       score: 85,
-      feedback: 'Strong problem-solving skills, good communication'
+      feedback: 'Strong problem-solving skills, good communication',
+      canLeaveFeedback: true
     },
     {
       type: 'Behavioral',
       company: 'Meta',
       date: '1 week ago',
       score: 92,
-      feedback: 'Excellent examples, clear structure in responses'
+      feedback: 'Excellent examples, clear structure in responses',
+      canLeaveFeedback: true
     },
     {
       type: 'System Design',
       company: 'Amazon',
       date: '2 weeks ago',
       score: 78,
-      feedback: 'Good high-level design, could improve on scalability details'
+      feedback: 'Good high-level design, could improve on scalability details',
+      canLeaveFeedback: true
     }
   ];
 
@@ -72,6 +77,26 @@ const MockInterview = () => {
       time: '10:00 AM'
     }
   ];
+
+  const handleFeedbackSubmit = (feedback: { rating: number; comment: string; name: string; role: string }) => {
+    // Save feedback to localStorage
+    const existingFeedback = localStorage.getItem('userFeedback');
+    const feedbackArray = existingFeedback ? JSON.parse(existingFeedback) : [];
+    
+    const newFeedback = {
+      name: feedback.name,
+      role: feedback.role,
+      content: feedback.comment,
+      rating: feedback.rating,
+      date: new Date().toISOString()
+    };
+    
+    feedbackArray.unshift(newFeedback); // Add to beginning of array
+    localStorage.setItem('userFeedback', JSON.stringify(feedbackArray));
+    
+    // Show success message or update UI as needed
+    alert('Thank you for your feedback! It will appear on our homepage.');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -210,7 +235,15 @@ const MockInterview = () => {
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600">{interview.feedback}</p>
+                    <p className="text-sm text-gray-600 mb-3">{interview.feedback}</p>
+                    {interview.canLeaveFeedback && (
+                      <button
+                        onClick={() => setShowFeedbackModal(true)}
+                        className="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                      >
+                        Leave Feedback
+                      </button>
+                    )}
                   </div>
                 ))}
               </div>
@@ -291,6 +324,13 @@ const MockInterview = () => {
             </div>
           </div>
         </div>
+
+        {/* Feedback Modal */}
+        <FeedbackModal
+          isOpen={showFeedbackModal}
+          onClose={() => setShowFeedbackModal(false)}
+          onSubmit={handleFeedbackSubmit}
+        />
       </div>
     </div>
   );
