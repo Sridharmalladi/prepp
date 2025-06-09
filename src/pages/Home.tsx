@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Brain, Target, Users, ArrowRight, CheckCircle, Star } from 'lucide-react';
+import { Code, Brain, Target, ArrowRight, CheckCircle, Star } from 'lucide-react';
 
 interface HomeProps {
   isDarkMode: boolean;
@@ -13,25 +13,19 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
       icon: Code,
       title: 'Coding Practice',
       description: 'Solve algorithmic problems with our interactive code editor and instant feedback.',
-      color: isDarkMode ? 'from-rose-300 to-rose-400' : 'from-rose-400 to-rose-500'
+      color: isDarkMode ? 'from-rose-300/80 to-rose-400/80' : 'from-rose-400/80 to-rose-500/80'
     },
     {
       icon: Brain,
       title: 'Mock Interviews',
       description: 'Practice with AI-powered mock interviews tailored to your target companies.',
-      color: isDarkMode ? 'from-indigo-300 to-indigo-400' : 'from-indigo-400 to-indigo-500'
+      color: isDarkMode ? 'from-indigo-300/80 to-indigo-400/80' : 'from-indigo-400/80 to-indigo-500/80'
     },
     {
       icon: Target,
       title: 'Skill Assessment',
       description: 'Track your progress and identify areas for improvement with detailed analytics.',
-      color: isDarkMode ? 'from-rose-300 to-indigo-300' : 'from-rose-400 to-indigo-400'
-    },
-    {
-      icon: Users,
-      title: 'Community',
-      description: 'Connect with other job seekers and share interview experiences.',
-      color: isDarkMode ? 'from-indigo-300 to-rose-300' : 'from-indigo-400 to-rose-400'
+      color: isDarkMode ? 'from-rose-300/80 to-indigo-300/80' : 'from-rose-400/80 to-indigo-400/80'
     }
   ];
 
@@ -68,15 +62,15 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
   const testimonials = getTestimonials();
 
   const themeClasses = {
-    background: isDarkMode ? 'bg-gray-900' : 'bg-orange-50',
-    cardBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
+    background: isDarkMode ? 'bg-gray-900' : 'bg-orange-50/60',
+    cardBg: isDarkMode ? 'bg-gray-800' : 'bg-white/90',
     textPrimary: isDarkMode ? 'text-gray-100' : 'text-gray-800',
     textSecondary: isDarkMode ? 'text-gray-300' : 'text-gray-600',
-    border: isDarkMode ? 'border-gray-700' : 'border-rose-200',
-    heroBg: isDarkMode ? 'bg-gradient-to-br from-gray-900 via-indigo-950 to-gray-900' : 'bg-gradient-to-br from-orange-50 via-rose-50 to-purple-50',
-    statsBg: isDarkMode ? 'bg-gradient-to-r from-rose-400 to-indigo-400' : 'bg-gradient-to-r from-rose-400 to-indigo-400',
-    sectionBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
-    testimonialsBg: isDarkMode ? 'bg-gray-900' : 'bg-orange-50'
+    border: isDarkMode ? 'border-gray-700' : 'border-rose-200/60',
+    heroBg: isDarkMode ? 'bg-gradient-to-br from-gray-900 via-indigo-950/80 to-gray-900' : 'bg-gradient-to-br from-orange-50/60 via-rose-50/60 to-purple-50/60',
+    statsBg: isDarkMode ? 'bg-gradient-to-r from-rose-400/80 to-indigo-400/80' : 'bg-gradient-to-r from-rose-400/80 to-indigo-400/80',
+    sectionBg: isDarkMode ? 'bg-gray-800/90' : 'bg-white/80',
+    testimonialsBg: isDarkMode ? 'bg-gray-900/90' : 'bg-orange-50/60'
   };
 
   return (
@@ -87,7 +81,7 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
           <div className="text-center">
             <h1 className={`text-4xl md:text-6xl font-heading font-bold ${themeClasses.textPrimary} mb-6 transition-colors duration-300 leading-tight`}>
               Master Your{' '}
-              <span className={`bg-gradient-to-r ${isDarkMode ? 'from-rose-300 to-indigo-300' : 'from-rose-500 to-indigo-500'} bg-clip-text text-transparent`}>
+              <span className={`bg-gradient-to-r ${isDarkMode ? 'from-rose-300/90 to-indigo-300/90' : 'from-rose-500/90 to-indigo-500/90'} bg-clip-text text-transparent`}>
                 Interview Skills
               </span>
             </h1>
@@ -99,8 +93,8 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
               <Link
                 to="/register"
                 className={`${isDarkMode 
-                  ? 'bg-gradient-to-r from-rose-400 to-rose-500 text-gray-100 hover:from-rose-300 hover:to-rose-400' 
-                  : 'bg-gradient-to-r from-rose-400 to-rose-500 text-slate-800 hover:from-rose-500 hover:to-rose-600'
+                  ? 'bg-gradient-to-r from-rose-400/90 to-rose-500/90 text-gray-100 hover:from-rose-300/90 hover:to-rose-400/90' 
+                  : 'bg-gradient-to-r from-rose-400/90 to-rose-500/90 text-slate-800 hover:from-rose-500/90 hover:to-rose-600/90'
                 } px-8 py-4 rounded-lg text-lg font-sans font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1`}
               >
                 Start Preparing Now
@@ -109,8 +103,8 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
               <Link
                 to="/dashboard"
                 className={`border-2 ${isDarkMode 
-                  ? 'border-indigo-400 text-indigo-300 hover:border-indigo-300 hover:text-indigo-200 hover:bg-indigo-400/10' 
-                  : 'border-indigo-400 text-indigo-500 hover:border-indigo-500 hover:text-indigo-600 hover:bg-indigo-50'
+                  ? 'border-indigo-400/80 text-indigo-300 hover:border-indigo-300/80 hover:text-indigo-200 hover:bg-indigo-400/10' 
+                  : 'border-indigo-400/80 text-indigo-500 hover:border-indigo-500/80 hover:text-indigo-600 hover:bg-indigo-50/80'
                 } px-8 py-4 rounded-lg text-lg font-sans font-semibold transition-all duration-200`}
               >
                 View Dashboard
@@ -132,13 +126,13 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
                 <div
                   key={index}
-                  className={`${themeClasses.cardBg} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border ${themeClasses.border} hover:border-rose-300`}
+                  className={`${themeClasses.cardBg} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border ${themeClasses.border} hover:border-rose-300/80`}
                 >
                   <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center mb-6 shadow-md`}>
                     <Icon className="h-6 w-6 text-white" />
@@ -188,11 +182,11 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`${themeClasses.cardBg} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border ${themeClasses.border} hover:border-indigo-300 transform hover:-translate-y-1`}
+                className={`${themeClasses.cardBg} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border ${themeClasses.border} hover:border-indigo-300/80 transform hover:-translate-y-1`}
               >
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-rose-400 fill-current" />
+                    <Star key={i} className="h-5 w-5 text-rose-400/90 fill-current" />
                   ))}
                 </div>
                 <p className={`${themeClasses.textSecondary} font-sans mb-6 italic transition-colors duration-300 leading-relaxed`}>"{testimonial.content}"</p>
@@ -218,8 +212,8 @@ const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
           <Link
             to="/register"
             className={`${isDarkMode 
-              ? 'bg-gradient-to-r from-rose-400 to-rose-500 text-gray-100 hover:from-rose-300 hover:to-rose-400' 
-              : 'bg-gradient-to-r from-rose-400 to-rose-500 text-slate-800 hover:from-rose-500 hover:to-rose-600'
+              ? 'bg-gradient-to-r from-rose-400/90 to-rose-500/90 text-gray-100 hover:from-rose-300/90 hover:to-rose-400/90' 
+              : 'bg-gradient-to-r from-rose-400/90 to-rose-500/90 text-slate-800 hover:from-rose-500/90 hover:to-rose-600/90'
             } px-8 py-4 rounded-lg text-lg font-sans font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center`}
           >
             Get Started for Free
