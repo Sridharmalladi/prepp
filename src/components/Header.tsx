@@ -77,9 +77,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) =>
 
             {/* Theme Toggle - Always visible */}
             {onToggleTheme && (
-              <div className="bg-pink-50 p-2 rounded-lg border border-pink-200 shadow-sm">
-                <ThemeToggle isDark={isDarkMode} onToggle={onToggleTheme} />
-              </div>
+              <ThemeToggle isDark={isDarkMode} onToggle={onToggleTheme} />
             )}
 
             {/* Mobile menu button */}
