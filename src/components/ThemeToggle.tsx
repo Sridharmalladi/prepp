@@ -23,9 +23,11 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDark, onToggle }) => {
             : 'translate-x-1 bg-white'
         }`}
       />
-      <span className={`absolute left-1 transition-opacity duration-300 ${isDark ? 'opacity-0' : 'opacity-100'}`}>
+      {/* Sun icon - shows in LIGHT mode (left side) */}
+      <span className={`absolute left-1 transition-opacity duration-300 ${!isDark ? 'opacity-100' : 'opacity-0'}`}>
         <Sun className="h-3 w-3 text-yellow-500" />
       </span>
+      {/* Moon icon - shows in DARK mode (right side) */}
       <span className={`absolute right-1 transition-opacity duration-300 ${isDark ? 'opacity-100' : 'opacity-0'}`}>
         <Moon className="h-3 w-3 text-slate-300" />
       </span>
