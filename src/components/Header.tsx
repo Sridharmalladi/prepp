@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Code, Brain, User, Menu, X, Home, BarChart3 } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
-const Header = () => {
+interface HeaderProps {
+  isDarkMode?: boolean;
+  onToggleTheme?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ isDarkMode = false, onToggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -17,7 +23,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="bg-white shadow-lg border-b border-gray-200">
+    <header className="bg-white shadow-lg border-b border-gray-200 relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -51,29 +57,39 @@ const Header = () => {
             })}
           </nav>
 
-          {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/login"
-              className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-            >
-              Sign In
-            </Link>
-            <Link
-              to="/register"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg"
-            >
-              Get Started
-            </Link>
-          </div>
+          {/* Right side - Auth Buttons, Theme Toggle, and Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            {/* Auth Buttons - Desktop */}
+            <div className="hidden md:flex items-center space-x-4">
+              <Link
+                to="/login"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                Get Started
+              </Link>
+            </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+            {/* Theme Toggle - Always visible */}
+            {onToggleTheme && (
+              <div className="bg-gray-50 p-2 rounded-lg border border-gray-200 shadow-sm">
+                <ThemeToggle isDark={isDarkMode} onToggle={onToggleTheme} />
+              </div>
+            )}
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Brain, Target, Users, ArrowRight, CheckCircle, Star } from 'lucide-react';
-import ThemeToggle from '../components/ThemeToggle';
 
 const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -91,14 +90,7 @@ const Home = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${themeClasses.background} relative`}>
-      {/* Theme Toggle - Fixed at the very top */}
-      <div className="fixed top-4 right-4 z-[9999]">
-        <div className={`p-3 rounded-full shadow-xl backdrop-blur-sm ${themeClasses.cardBg} ${themeClasses.border} border transition-all duration-300 hover:shadow-2xl`}>
-          <ThemeToggle isDark={isDarkMode} onToggle={toggleTheme} />
-        </div>
-      </div>
-
+    <div className={`min-h-screen transition-colors duration-300 ${themeClasses.background}`}>
       {/* Hero Section */}
       <section className={`relative ${themeClasses.heroBg} py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
