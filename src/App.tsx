@@ -2,12 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import CodingPractice from './pages/CodingPractice';
-import MockInterview from './pages/MockInterview';
-import Profile from './pages/Profile';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import InterviewRoom from './pages/InterviewRoom';
+import StatusViewer from './pages/StatusViewer';
+import FeedbackSummary from './pages/FeedbackSummary';
 
 function App() {
   return (
@@ -17,12 +14,9 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/coding" element={<CodingPractice />} />
-            <Route path="/interview" element={<MockInterview />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/interview/:roomName" element={<InterviewRoom />} />
+            <Route path="/status" element={<StatusViewer />} />
+            <Route path="/feedback/:interviewId" element={<FeedbackSummary />} />
           </Routes>
         </main>
       </div>
