@@ -92,9 +92,9 @@ const Home = () => {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${themeClasses.background} relative`}>
-      {/* Theme Toggle - Fixed position with proper z-index */}
-      <div className="fixed top-20 right-4 z-[100]">
-        <div className={`p-3 rounded-full shadow-lg backdrop-blur-sm ${themeClasses.cardBg} ${themeClasses.border} border transition-all duration-300`}>
+      {/* Theme Toggle - Fixed at the very top */}
+      <div className="fixed top-4 right-4 z-[9999]">
+        <div className={`p-3 rounded-full shadow-xl backdrop-blur-sm ${themeClasses.cardBg} ${themeClasses.border} border transition-all duration-300 hover:shadow-2xl`}>
           <ThemeToggle isDark={isDarkMode} onToggle={toggleTheme} />
         </div>
       </div>
